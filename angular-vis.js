@@ -99,7 +99,8 @@ angular.module('ngVis', [])
                     'rangechange',
                     'rangechanged',
                     'timechange',
-                    'timechanged'
+                    'timechanged',
+                    'select'
                 ];
 
                 var network = new vis.Network(element[0], scope.data, scope.options);
@@ -147,7 +148,7 @@ angular.module('ngVis', [])
                 scope.$watch('events', function (events) {
                     angular.forEach(events, function (callback, event) {
                         if (['select', 'click', 'hoverNode'].indexOf(String(event)) >= 0) {
-                            network.on(event, callback);
+                            network.on(String(event), callback);
                         }
                     });
                 });
